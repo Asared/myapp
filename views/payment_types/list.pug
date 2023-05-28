@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+    h1= title
+    table
+        tr 
+            th id
+            th Имя
+        each item in payment_types
+            tr
+                td= item.id
+                td= item.label
+    div
+        ul
+          li
+            a(href='/') Главная страница
+            li
+              a(href='/clients') Клиенты
+            li
+              a(href='/orders') Заказы
+            li
+              a(href='/payments') Платежи
+            li
+              a(href='/users') Пользователи
+            li
+              a(href='/material') Материалы
+            li
+              a(href='/order_items') Элементы заказа
+            li
+              a(href='/order_statuses') Статуы заказа
+            li
+              a(href='/payment_types') Тип платежа
+            li
+              a(href='/positions') Должность
+            li
+              a(href='/precious_stone') Драгоценные камни
+            li
+              a(href='/product') Изделие
+            li
+              a(href='/product_type') Тип изделия
+            li
+              a(href='/purchase_list') Список покупок
+            li
+              a(href='/roles') Роли
+            li
+              a(href='/staff') Персонал
+            li
+              a(href='/supplier') Поставщики     
