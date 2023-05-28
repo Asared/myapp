@@ -5,39 +5,57 @@ block content
         ul
           li
             a(href='/') Главная страница
-            li
-              a(href='/clients') Клиенты
-            li
-              a(href='/orders') Заказы
-            li
-              a(href='/payments') Платежи
-            li
-              a(href='/users') Пользователи
-            li
-              a(href='', id='Logout') Выйти
-            li
-              a(href='', id='Login') Войти
-            li
-              a(href='/material') Материалы
-            li
-              a(href='/order_items') Элементы заказа
-            li
-              a(href='/order_statuses') Статуы заказа
-            li
-              a(href='/payment_types') Тип платежа
-            li
-              a(href='/positions') Должность
-            li
-              a(href='/precious_stone') Драгоценные камни
-            li
-              a(href='/product') Изделие
-            li
-              a(href='/product_type') Тип изделия
-            li
-              a(href='/purchase_list') Список покупок
-            li
-              a(href='/roles') Роли
-            li
-              a(href='/staff') Персонал
-            li
-              a(href='/supplier') Поставщики
+            if user
+              if can.view_clients
+                li
+                  a(href='/clients') Клиенты
+              if can.view_orders
+                li
+                  a(href='/orders') Заказы
+              if can.view_payments
+                li
+                  a(href='/payments') Платежи
+              if can.view_users
+                li
+                  a(href='/users') Пользователи
+              if can.view_material  
+                li
+                  a(href='/material') Материалы
+              if can.view_order_items
+                li
+                  a(href='/order_items') Элементы заказа
+              if can.view_order_statuses
+                li
+                  a(href='/order_statuses') Статуы заказа
+              if can.view_payment_types
+                li
+                  a(href='/payment_types') Тип платежа
+              if can.view_positions
+                li
+                  a(href='/positions') Должность
+              if can.view_precious_stone
+                li
+                  a(href='/precious_stone') Драгоценные камни
+              if can.view_product
+                li
+                  a(href='/product') Изделие
+              if can.view_product_type
+                li
+                  a(href='/product_type') Тип изделия
+              if can.view_purchase_list
+                li
+                  a(href='/purchase_list') Список покупок
+              if can.view_roles
+                li
+                  a(href='/roles') Роли
+              if can.view_staff
+                li
+                  a(href='/staff') Персонал
+              if can.view_supplier
+                li
+                  a(href='/supplier') Поставщики
+                li
+                  a(href='', id='Logout') Выйти
+            else
+                li
+                  a(href='', id='Login') Войти

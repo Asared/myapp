@@ -62,7 +62,16 @@ exports.can = function(user) {
     res.view_payments = user && user.id_role <= 2 ? true : false
     res.view_orders = user && user.id_role <= 3  ? true : false
     res.view_clients = user && user.id_role <= 2 ? true : false
-
+	res.view_material = user && user.id_role <= 2 ? true : false
+	res.view_order_items = user && user.id_role <= 3 ? true : false
+	res.view_payment_types = user && user.id_role <= 3 ? true : false
+	res.view_positions = user && user.id_role == 1 ? true : false
+	res.view_precious_stone = user && user.id_role <= 2 ? true : false
+	res.view_product_type = user && user.id_role <= 2 ? true : false
+	res.view_product = user && user.id_role <= 3 ? true : false
+	res.view_purchase_list = user && user.id_role <= 2 ? true : false
+	res.view_staff = user && user.id_role == 1 ? true : false
+	res.view_supplier = user && user.id_role <= 2 ? true : false
     return res
 }
 
