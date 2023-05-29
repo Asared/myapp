@@ -1,12 +1,38 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/clients.js')
     h1= title
-    table
+    button(id='create_clients') Создать
+    button(id='delete_clients') Удалить
+    table#tblclients
         tr 
             th id
             th Имя
-        each item in clients
-            tr
-                td= item.id
-                td= item.label
+    div#create_clients_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить Клиента
+              a#create_clients_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpLabel") Клиент
+                  input#inpLabel(type="text")
+
+            div.q-buttons
+              a#submit_create_clients Создать
+              a#cancel_create_clients Отменить
+
+    div#delete_clients_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить Клиента
+              a#delete_clients_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id клиента
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_clients Удалить
+              a#cancel_delete_clients Отменить

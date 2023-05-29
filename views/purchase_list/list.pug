@@ -1,14 +1,10 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/purchase_list.js')
     h1= title
-    table
+    table#tbl_purchase_list
         tr 
             th id
             th Имя
             th дата покупки
-        each item in purchase_list
-            tr
-                td= item.purchase_id
-                td= item.order_id 
-                td= item.purchase_date

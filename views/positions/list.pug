@@ -1,12 +1,9 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/positions.js')
     h1= title
-    table
+    table#tbl_positions
         tr 
             th id
             th Имя
-        each item in positions
-            tr
-                td= item.position_id
-                td= item.position_name

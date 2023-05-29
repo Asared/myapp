@@ -1,16 +1,11 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/supplier.js')
     h1= title
-    table
+    table#tbl_supplier
         tr 
             th id
             th имя
             th id материала
             th id камня
-        each item in supplier
-            tr
-                td= item.supplier_id
-                td= item.supplier_name 
-                td= item.material_id
-                td= item.stone_id 

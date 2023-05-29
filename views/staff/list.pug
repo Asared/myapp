@@ -1,14 +1,10 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/staff.js')
     h1= title
-    table
+    table#tbl_staff
         tr 
             th id
             th ФИО
             th id должности
-        each item in staff
-            tr
-                td= item.staff_id
-                td= item.fio 
-                td= item.position_id

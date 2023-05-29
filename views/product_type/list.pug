@@ -1,12 +1,9 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/product_type.js')
     h1= title
-    table
+    table#tbl_product_type
         tr 
             th id
             th Имя
-        each item in product_type
-            tr
-                td= item.type_id
-                td= item.type_name

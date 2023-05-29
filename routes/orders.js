@@ -3,65 +3,56 @@ var router = express.Router();
 
 router.get('/', async function(req, res, next) {
 
-    let orders = await req.db.any(`
-        SELECT
+    res.render('orders/list', { title: 'Заказы' })
+
+});
+router.get('/edit/:id', async function(req, res, next) {
+    let id = req.params.id;
+    let order = await req.db.any(`
+      SELECT
             orders.id AS id,
             orders.label AS label,
-            order_statuses.label AS order_status_label,
-            clients.label AS client_label,
             orders.amount AS amount
         FROM
             orders
-        INNER JOIN
-            clients ON clients.id = orders.id_client
-        INNER JOIN
-            order_statuses ON order_statuses.id = orders.id_status
-    `)
-    console.log(orders)
-     let clients = await req.db.any(`
-        SELECT
-            *
-        FROM
-            clients
-    `)
-    console.log(clients)
-    res.render('orders/list', { title: 'Заказы', orders: orders, clients: clients })
-
-});
+    `, [id]);
+    console.log(order);
+    let clients = await req.db.any(`
+          SELECT
+              *
+          FROM
+              clients
+      `)
+      res.render('orders/edit', {
+        title: 'Редактирование заказа',
+        label: order[0].label,
+        amount: order[0].amount
+      });
+  });
+  
+  router.post('/update/:id', async function(req, res, next) {
+    let id = req.params.id;
+    let updatedOrder = req.body;
+    await req.db.none(`UPDATE orders SET label = $1, amount = $2 WHERE id = $3`, [updatedOrder.label, updatedOrder.amount, id]);
+    res.send({ msg: '' });
+  });
 
 router.post('/create', async function(req, res, next) {
 
-    let order = req.body
+    let orders = req.body
 
-    await req.db.none('INSERT INTO orders(label, id_client, amount) VALUES(${label}, ${id_client}, ${amount})', order);
+    await req.db.none('INSERT INTO orders(label, amount) VALUES(${label}, ${amount})', orders);
 
     res.send({msg: ''})
 
 });
 
+router.post('/delete', async function(req, res, next) {
 
-router.get('/:id', async function(req, res) {
+    let orders = req.body
 
-    let id = req.params.id
-
-    let order = await req.db.one(`
-        SELECT
-            orders.id AS id,
-            orders.label AS label,
-            order_statuses.label AS order_status_label,
-            clients.label AS client_label,
-            orders.amount AS amount
-        FROM
-            orders
-        INNER JOIN
-            clients ON clients.id = orders.id_client
-        INNER JOIN
-            order_statuses ON order_statuses.id = orders.id_status
-        WHERE
-            orders.id = $/id/
-    `, {id: id})
-
-    res.render('orders/view', { title: 'Заказ' + order.label, order: order })
+    await req.db.none("DO $do$ BEGIN IF (${id}<>'') THEN DELETE FROM orders WHERE id = ${id}; END IF; END $do$",orders);
+    res.send({msg: ''})
 
 });
 

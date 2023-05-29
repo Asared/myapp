@@ -1,16 +1,46 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/order_items.js')
     h1= title
-    table
+    button(id='create_order_items') Создать
+    button(id='delete_order_items') Удалить
+    table#tbl_order_items
         tr 
             th id
             th Имя
             th id заказа
             th стоимость
-        each item in order_items
-            tr
-                td= item.id
-                td= item.label 
-                td= item.id_order
-                td= item.amount
+    div#create_order_items_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить элемент заказа 
+              a#create_order_items_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpLabel") Имя
+                  input#inpLabel(type="text")
+                div.q-form-data
+                  create(for="inpId_order") id заказа
+                  input#inpId_order(type="text")
+                div.q-form-data
+                  create(for="inpAmount") стоимость
+                  input#inpAmount(type="text")
+
+            div.q-buttons
+              a#submit_create_order_items Создать
+              a#cancel_create_order_items Отменить
+
+    div#delete_order_items_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить Элемент заказа
+              a#delete_order_items_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id Элемента аказа
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_order_items Удалить
+              a#cancel_delete_order_items Отменить

@@ -1,16 +1,46 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/payments.js')
     h1= title
-    table
+    button(id='create_payments') Создать
+    button(id='delete_payments') Удалить
+    table#tbl_payments
         tr 
             th id
             th Заказ
             th Тип платежа
             th Сумма платежа
-        each item in payments
-            tr
-                td= item.id
-                td= item.order_label
-                td= item.payment_type_label
-                td= item.amount
+    div#create_payments_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить Платеж
+              a#create_payments_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpId_order") Id заказа
+                  input#inpId_order(type="INT")
+                div.q-form-data
+                  create(for="inpId_payment_type") id типа платежа
+                  input#inpId_payment_type(type="INT")
+                div.q-form-data
+                  create(for="inpAmount") стоимость
+                  input#inpAmount(type="text")
+
+            div.q-buttons
+              a#submit_create_payments Создать
+              a#cancel_create_payments Отменить
+
+    div#delete_payments_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить Платеж
+              a#delete_payments_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id Платежа
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_payments Удалить
+              a#cancel_delete_payments Отменить

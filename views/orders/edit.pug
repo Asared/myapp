@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  script(src='/javascripts/orders.js')
+
+  h1= title
+  form(id='edit_order_form')
+    div.q-form-data
+      label(for="inplabel") Название
+      input#inplabel(type="text", value=label)
+    div.q-form-data
+      label(for="inpamount") Сумма
+      input#inpamount(type="NUMERIC(20,2)", value=amount)
+  div.q-buttons
+    button#save_order_changes Сохранить изменения

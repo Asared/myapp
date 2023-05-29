@@ -1,14 +1,10 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/roles.js')
     h1= title
-    table
+    table#tbl_roles
         tr 
             th id
             th код
             th имя 
-        each item in roles
-            tr
-                td= item.id
-                td= item.code 
-                td= item.label

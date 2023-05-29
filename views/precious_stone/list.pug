@@ -1,14 +1,10 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/precious_stone.js')
     h1= title
-    table
+    table#tbl_precious_stone
         tr 
             th id
             th Имя
             th Цена за грамм 
-        each item in precious_stone
-            tr
-                td= item.stone_id
-                td= item.stone_name 
-                td= item.stone_price_per_gramm

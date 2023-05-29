@@ -1,8 +1,9 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/product.js')
     h1= title
-    table
+    table#tbl_product
         tr 
             th id
             th Имя
@@ -12,13 +13,3 @@ block content
             th вес материала
             th вес камня
             th id типа 
-        each item in product
-            tr
-                td= item.product_id
-                td= item.product_name
-                td= item.production_cost 
-                td= item.material_id
-                td= item.stone_id 
-                td= item.material_weight 
-                td= item.stone_weight 
-                td= item.type_id

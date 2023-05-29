@@ -18,15 +18,12 @@ block content
               if can.view_users
                 li
                   a(href='/users') Пользователи
-              if can.view_material  
-                li
-                  a(href='/material') Материалы
               if can.view_order_items
                 li
                   a(href='/order_items') Элементы заказа
               if can.view_order_statuses
                 li
-                  a(href='/order_statuses') Статуы заказа
+                  a(href='/order_statuses') Статуc заказа
               if can.view_payment_types
                 li
                   a(href='/payment_types') Тип платежа
@@ -54,8 +51,8 @@ block content
               if can.view_supplier
                 li
                   a(href='/supplier') Поставщики
-                li
-                  a(href='', id='Logout') Выйти
+              li
+                a(href='', id='Logout') Выйти
             else
                 li
                   a(href='', id='Login') Войти

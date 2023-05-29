@@ -1,12 +1,38 @@
 extends ../layout
 
 block content
+    script(src='/javascripts/payment_types.js')
     h1= title
-    table
+    button(id='create_payment_types') Создать
+    button(id='delete_payment_types') Удалить
+    table#tbl_payment_types
         tr 
             th id
             th Имя
-        each item in payment_types
-            tr
-                td= item.id
-                td= item.label
+    div#create_payment_types_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить Тип платежа
+              a#create_payment_types_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpLabel") Имя
+                  input#inpLabel(type="text")
+
+            div.q-buttons
+              a#submit_create_payment_types Создать
+              a#cancel_create_payment_types Отменить
+
+    div#delete_payment_types_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить Тип платежа
+              a#delete_payment_types_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id типа платежа
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_payment_types Удалить
+              a#cancel_delete_payment_types Отменить
