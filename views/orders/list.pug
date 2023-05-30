@@ -2,9 +2,11 @@ extends ../layout
 
 block content
     script(src='/javascripts/orders.js')
+    <input type="text" id="searchname" placeholder="Поиск по имени">
     h1= title
     button(id='create_orders') Создать
     button(id='delete_orders') Удалить
+    button(id='search_orders') Поиск
     table#tbl_orders
         tr 
             th id

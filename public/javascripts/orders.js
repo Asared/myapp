@@ -147,4 +147,31 @@ $(document).ready(function(){
       console.log(error);
     });
   });
+    $(document).ready(function(){
+        $('#search_orders').click(function(e){
+            e.preventDefault()
+            
+            var position = $('#searchname').val();
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/orders/search',
+                data: {position: position},
+                dataType: 'JSON'
+            }).done(function( response ) {
+                $('#tbl_orders').empty();
+
+                response.orders.forEach(orders => {
+                    $('#tbl_orders').append(
+                        `<tr>
+                            <td><a href=${"/orders/edit/" + orders.id}>${orders.id}</a>
+                            <td>${orders.label}
+                            <td>${orders.amount}
+                        </tr>`
+                    );
+                });
+            });
+
+        });
+    });
 })
