@@ -11,7 +11,7 @@ router.post('/create', async function(req, res, next) {
 
     let clients = req.body
 
-    await req.db.none('INSERT INTO clients(label) VALUES(${label}', clients);
+    await req.db.none('INSERT INTO clients(label) VALUES(${label})', clients);
 
     res.send({msg: ''})
 

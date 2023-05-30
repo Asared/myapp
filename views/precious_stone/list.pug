@@ -3,8 +3,41 @@ extends ../layout
 block content
     script(src='/javascripts/precious_stone.js')
     h1= title
+    button(id='create_precious_stone') Создать
+    button(id='delete_precious_stone') Удалить
     table#tbl_precious_stone
         tr 
             th id
             th Имя
             th Цена за грамм 
+    div#create_precious_stone_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить  камень
+              a#create_precious_stone_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpStone_name") Имя
+                  input#inpStone_name(type="text")
+                div.q-form-data
+                  create(for="inpStone_price_per_gram") Цена за грамм
+                  input#inpStone_price_per_gram(type="Numeric")
+
+
+            div.q-buttons
+              a#submit_create_precious_stone Создать
+              a#cancel_create_precious_stone Отменить
+
+    div#delete_precious_stone_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить драгоценный камень
+              a#delete_precious_stone_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id драгоценного камня
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_precious_stone Удалить
+              a#cancel_delete_precious_stone Отменить

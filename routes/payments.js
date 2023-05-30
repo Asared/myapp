@@ -6,11 +6,6 @@ router.get('/', async function(req, res, next) {
     res.render('payments/list', { title: 'Платежи' })
 
 });
-router.get('/', async function(req, res, next) {
-
-    res.render('payments/list', { title: 'Заказы' })
-
-});
 
 router.post('/create', async function(req, res, next) {
 

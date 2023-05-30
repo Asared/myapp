@@ -37,30 +37,30 @@ $(document).ready(function(){
     })
   
     $('#submit_create_payments').click(function(e){
-  
+
         e.preventDefault()
         let data = {
-            id_order: $('#inpId_order'),
-            id_payment_type: $('#inpId_payment_type'),
-            amount: $('#inpAmount').val(),
+            id_order: $('#inpId_order').val(),
+            id_payment_type: $('#inpId_payment_type').val(),
+            amount: $('#inpAmount').val()
         }
-  
+    
         $.ajax({
             type: 'POST',
             data: data,
             url: '/payments/create',
             dataType: 'JSON'
         }).done(function( response ) {
-  
+    
             if (response.msg === '') {
-                alert('Заказ создан')
+                alert('Платеж создан')
                 window.location.reload()
             }
             else {
                 alert(response.msg)
             }
         });
-  
+    
     })
   
     $('#delete_payments').click(function(e){
@@ -96,7 +96,7 @@ $(document).ready(function(){
         }).done(function( response ) {
   
             if (response.msg === '') {
-                alert('Корзина удалена')
+                alert('Платеж удален')
                 window.location.reload()
             }
             else {
@@ -105,5 +105,4 @@ $(document).ready(function(){
         });
   
     })
-  })
-
+})

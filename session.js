@@ -62,6 +62,7 @@ exports.can = function(user) {
     res.view_payments = user && user.id_role <= 2 ? true : false
     res.view_orders = user && user.id_role <= 2  ? true : false
     res.view_clients = user && user.id_role <= 2 ? true : false
+	res.view_material = user && user.id_role <= 2 ? true : false
 	res.view_order_items = user && user.id_role <= 3 ? true : false
 	res.view_order_statuses= user && user.id_role <= 3 ? true : false
 	res.view_payment_types = user && user.id_role <= 3 ? true : false

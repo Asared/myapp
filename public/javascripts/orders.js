@@ -40,8 +40,8 @@ $(document).ready(function(){
 
       e.preventDefault()
       let data = {
-          amount: $('#inpAmount').val(),
-          label: $('#inpLabel').val()
+          label: $('#inpLabel').val(),
+          amount: $('#inpAmount').val()
       }
 
       $.ajax({
@@ -95,7 +95,7 @@ $(document).ready(function(){
       }).done(function( response ) {
 
           if (response.msg === '') {
-              alert('Корзина удалена')
+              alert('Заказ удален')
               window.location.reload()
           }
           else {
@@ -104,22 +104,19 @@ $(document).ready(function(){
       });
 
   })
-   // Обработчик клика на номер пункта
    $('.order-id').click(function(e) {
     let id = $(this).data('id');
     window.location.href = '/orders/edit/' + id;
   });
 
-  // Обработчик клика на кнопку "Сохранить изменения"
   $('#save_order_changes').click(function(e) {
     e.preventDefault();
 
     let currentURL = window.location.href;
   
-    // Разбить URL на части
     let urlParts = currentURL.split('/');
   
-    // Получить последний элемент в массиве, который должен быть `id`
+    
     let id = urlParts[urlParts.length - 1];
 
     let data = {

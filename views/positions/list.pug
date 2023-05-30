@@ -3,7 +3,36 @@ extends ../layout
 block content
     script(src='/javascripts/positions.js')
     h1= title
+    button(id='create_positions') Создать
+    button(id='delete_positions') Удалить
     table#tbl_positions
         tr 
             th id
             th Имя
+    div#create_positions_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Добавить должность
+              a#create_positions_popup_close(style="create: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  create(for="inpPosition_name") Имя
+                  input#inpPosition_name(type="text")
+
+            div.q-buttons
+              a#submit_create_positions Создать
+              a#cancel_create_positions Отменить
+
+    div#delete_positions_popup.q-window
+          div.q-window-block(style="width:300px;height:220px;margin:0px 0 0 -400px")
+            div.q-window-header Удалить должность
+              a#delete_positions_popup_close(style="delete: relative;left: 38px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  delete(for="inpId") id должности
+                  input#inpId(type="INT")
+
+            div.q-buttons
+              a#submit_delete_positions Удалить
+              a#cancel_delete_positions Отменить

@@ -10,6 +10,7 @@ const db = pgp('postgres://postgres:test@localhost:5432/test')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var clientsRouter = require('./routes/clients');
+var materialRouter = require('./routes/material');
 var ordersRouter = require('./routes/orders');
 var paymentsRouter = require('./routes/payments');
 var order_itemsRouter = require('./routes/order_items');
@@ -46,6 +47,7 @@ app.use(function(req,res,next){
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/clients', clientsRouter);
+app.use('/material', materialRouter);
 app.use('/orders', ordersRouter);
 app.use('/payments', paymentsRouter);
 app.use('/order_items', order_itemsRouter);
@@ -76,9 +78,10 @@ var api_product = require('./routes/api/product');
 api.use('/product', api_product);
 var api_clients = require('./routes/api/clients');
 api.use('/clients', api_clients);
+var api_material = require('./routes/api/material');
+api.use('/material', api_material);
 var api_order_items = require('./routes/api/order_items');
 api.use('/order_items', api_order_items);
-
 var api_payment_types = require('./routes/api/payment_types');
 api.use('/payment_types', api_payment_types);
 var api_payments = require('./routes/api/payments');

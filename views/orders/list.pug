@@ -9,9 +9,9 @@ block content
     button(id='search_orders') Поиск
     table#tbl_orders
         tr 
-            th id
-            th имя
-            th Общая Сумма
+            th Id
+            th Имя
+            th Общая сумма
 
 
     div#create_orders_popup.q-window
@@ -21,11 +21,11 @@ block content
             div.q-window-body.q-form
               div.q-window-filters-form
                 div.q-form-data
-                  create(for="inpAmount") Общая цена
-                  input#inpAmount(type="text")
-                div.q-form-data
-                  create(for="inpLabel") User id
+                  create(for="inpLabel") Имя
                   input#inpLabel(type="text")
+                div.q-form-data
+                  create(for="inpAmount") Общая сумма
+                  input#inpAmount(type="text")
 
             div.q-buttons
               a#submit_create_orders Создать
@@ -38,7 +38,7 @@ block content
             div.q-window-body.q-form
               div.q-window-filters-form
                 div.q-form-data
-                  delete(for="inpId") id Заказа
+                  delete(for="inpId") Id Заказа
                   input#inpId(type="INT")
 
             div.q-buttons
